@@ -7,7 +7,9 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class YamlEnvFileParser extends AbstractEnvVarsProvider {
 
@@ -18,8 +20,8 @@ public class YamlEnvFileParser extends AbstractEnvVarsProvider {
     @NotNull
     @Override
     public Map<String, String> getEnvVars(@NotNull Map<String, String> runConfigEnv, @NotNull String path) throws EnvFileErrorException, IOException {
-        Map<String, String> result;
-        try (InputStream input = new FileInputStream(new File(path))) {
+        Map<String, Object> result;
+        try (InputStream input = new FileInputStream(path)) {
             result = new Yaml().load(input);
         } catch (ClassCastException e) {
             throw new EnvFileErrorException(
@@ -30,6 +32,13 @@ public class YamlEnvFileParser extends AbstractEnvVarsProvider {
         if (result == null) {
             result = new HashMap<>();
         }
-        return result;
+        Map<String, String> mssresult = new LinkedHashMap<>();
+        Set<String> keys = result.keySet();
+        for(String key : keys) {
+            var v = result.get(key);
+            var strV = String.valueOf(v);
+            mssresult.put(key, strV);
+        }
+        return mssresult;
     }
 }

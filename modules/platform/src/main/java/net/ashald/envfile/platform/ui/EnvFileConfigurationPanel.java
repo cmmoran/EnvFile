@@ -199,7 +199,7 @@ class EnvFileConfigurationPanel<T extends RunConfigurationBase<?>> extends JPane
       AnActionButton button,
       final TableView<EnvFileEntry> table,
       final ListTableModel<EnvFileEntry> model) {
-    DefaultActionGroup actionGroup = new DefaultActionGroup(null, false);
+    DefaultActionGroup actionGroup = new DefaultActionGroup((String)null, false);
 
     for (final EnvVarsProviderExtension extension :
         EnvVarsProviderExtension.getParserExtensions()) {

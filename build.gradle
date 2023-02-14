@@ -20,11 +20,11 @@ allprojects {
   project.version = scmVersion.version
 
   ext.jetbrains = [
-      version : "2021.3.2",
-      pycharm : "PythonCore:213.6461.82",
-      rubymine: "org.jetbrains.plugins.ruby:213.6461.79",
-      goland  : "org.jetbrains.plugins.go:213.6461.48",
-      scala   : "org.intellij.scala:2021.3.17",
+      version : "2022.3.1",
+      pycharm : "PythonCore:223.8214.16",
+      rubymine: "org.jetbrains.plugins.ruby:223.8214.52",
+      goland  : "org.jetbrains.plugins.go:223.8214.52",
+      scala   : "org.intellij.scala:2022.3.15",
       webstorm   : "JavaScript"
   ]
   buildSearchableOptions {

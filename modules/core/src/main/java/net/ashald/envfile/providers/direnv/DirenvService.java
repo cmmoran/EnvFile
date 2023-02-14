@@ -19,7 +19,7 @@ public class DirenvService {
   private static final List<Pattern> IGNORES =
       Arrays.stream("^direnv_.*\n^_$\n^shlvl$\n^xpc_.*\n^pwd$\n^oldpwd$".split("\n"))
           .map(p -> Pattern.compile("(?i)" + p))
-          .collect(Collectors.toList());
+          .toList();
 
   private Map<String, String> outerEnv;
   private Map<String, String> env = new LinkedHashMap<>();
